@@ -8,6 +8,10 @@ use App\Models\Course;
 use App\Models\User;
 use App\Http\Controllers\Admin\TeamMemberController;
 use App\Models\TeamMember;
+use App\Http\Controllers\Admin\PublicationController;
+
+
+
 
 
 
@@ -40,9 +44,17 @@ Route::get('/team', function () {
 })->name('team');
 
 //Publication Page
+// Route::get('/publication', function () {
+//     return view('publication');
+// });
+
+use App\Models\Publication;
+
 Route::get('/publication', function () {
-    return view('publication');
-});
+    $publications = Publication::orderBy('year', 'desc')->get();
+    return view('publication', compact('publications'));
+})->name('publications');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +82,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::put('/team/{teamMember}', [TeamMemberController::class, 'update'])->name('admin.team.update');
         Route::delete('/team/{teamMember}', [TeamMemberController::class, 'destroy'])->name('admin.team.destroy');
 
-        //Route::resource('team', TeamMemberController::class)->except(['show']);
+
+        //Publications
+        Route::get('/publications', [PublicationController::class, 'index'])->name('admin.publications.index');
+        Route::post('/publications', [PublicationController::class, 'store'])->name('admin.publications.store');
 
 
     });
