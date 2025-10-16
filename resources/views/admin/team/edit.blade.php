@@ -22,7 +22,7 @@
             <option value="Research Scholar" {{ $teamMember->role == 'Research Scholar' ? 'selected' : '' }}>Research Scholar</option>
             <option value="Master of Design" {{ $teamMember->role == 'Master of Design' ? 'selected' : '' }}>Master of Design</option>
             <option value="Project Staff" {{ $teamMember->role == 'Project Staff' ? 'selected' : '' }}>Project Staff</option>
-            <option value="Others" {{ $teamMember->role == 'Others' ? 'selected' : '' }}>Others</option>
+            <option value="Intern" {{ $teamMember->role == 'Intern' ? 'selected' : '' }}>Intern</option>
         </select>
         </div>
 

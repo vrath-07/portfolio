@@ -21,7 +21,7 @@
                 <option value="Research Scholar">Research Scholar</option>
                 <option value="Master of Design">Master of Design</option>
                 <option value="Project Staff">Project Staff</option>
-                <option value="Others">Others</option>
+                <option value="Intern">Intern</option>
             </select>
         </div>
 
