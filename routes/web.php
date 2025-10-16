@@ -64,6 +64,12 @@ Route::get('/projects', function () {
     return view('projects', compact('projects'));
 })->name('projects');
 
+//ContactMe
+Route::get('/contact', function () {
+    return view('contact');
+});
+// });
+
 
 
 /*
