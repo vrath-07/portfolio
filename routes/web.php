@@ -2,13 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CourseAdminController;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Publication;
+use App\Models\Project;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourseAdminController;
 use App\Http\Controllers\Admin\TeamMemberController;
-use App\Models\TeamMember;
+// use App\Models\TeamMember;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\ProjectController;
 
 
 
@@ -48,12 +51,19 @@ Route::get('/team', function () {
 //     return view('publication');
 // });
 
-use App\Models\Publication;
 
 Route::get('/publication', function () {
     $publications = Publication::orderBy('year', 'desc')->get();
     return view('publication', compact('publications'));
 })->name('publications');
+
+//Projects
+
+Route::get('/projects', function () {
+    $projects = Project::orderByDesc('year')->get();
+    return view('projects', compact('projects'));
+})->name('projects');
+
 
 
 /*
@@ -86,6 +96,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
         //Publications
         Route::get('/publications', [PublicationController::class, 'index'])->name('admin.publications.index');
         Route::post('/publications', [PublicationController::class, 'store'])->name('admin.publications.store');
+
+        //Projects
+        // Route::get('/projects', [ProjectController::class, 'index'])->name('admin.projects.index');
+        // Route::get('/projects/create', [ProjectController::class, 'create'])->name('admin.projects.create');
+        // Route::post('/projects', [ProjectController::class, 'store'])->name('admin.projects.store');
+        // Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+        // Projects (Admin CRUD)
+        Route::resource('projects', ProjectController::class)->names('admin.projects');
+
+
 
 
     });

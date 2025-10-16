@@ -22,6 +22,7 @@
                 <a href="{{ route('admin.courses.index') }}" class="nav-link d-inline text-white">Courses</a>
                 <a href="{{ route('admin.team.index') }}" class="nav-link d-inline text-white">Team</a>
                 <a href="{{ route('admin.publications.index') }}" class="nav-link d-inline text-white">Publications</a>
+                 <a href="{{ route('admin.projects.index') }}" class="nav-link d-inline text-white">Projects</a>
                 <a href="{{ route('logout') }}" 
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    class="nav-link d-inline text-white">
